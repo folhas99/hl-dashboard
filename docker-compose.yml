@@ -1,0 +1,13 @@
+services:
+  hl-dashboard:
+    build: .
+    ports:
+      - "5555:5555"
+    environment:
+      - DATABASE_URL=file:/data/db.sqlite
+      - NEXTAUTH_URL=http://localhost:5555
+      - NEXTAUTH_SECRET=change-me-to-a-long-random-string
+      - HL_INFO_URL=https://api.hyperliquid.xyz/info
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
